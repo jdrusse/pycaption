@@ -72,9 +72,10 @@ class SRTWriter(BaseWriter):
         srt_captions = []
 
         for lang in captions.get_languages():
-            srt_captions.append(self._recreate_lang(captions.get_captions(lang)))
+            caption = [lang,self._recreate_lang(captions.get_captions(lang))]
+            srt_captions.append(caption)
 
-        return 'MULTI-LANGUAGE SRT\n'.join(srt_captions)
+        return srt_captions
 
     def _recreate_lang(self, captions):
         srt = ''
